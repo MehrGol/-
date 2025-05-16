@@ -21,6 +21,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            position: relative;
         }
 
         .container {
@@ -124,25 +125,37 @@
             -webkit-user-select: text;
         }
 
-        /* استایل راهنمای موبایل */
+        /* استایل جدید راهنمای موبایل */
         .mobile-help {
             color: rgba(255,255,255,0.7);
             text-align: center;
             font-size: 12px;
-            margin-top: 20px;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            padding: 0 15px;
+            animation: slideDownFade 1s ease 6s forwards;
+            opacity: 1;
             display: none;
-            animation: fadeOut 0.5s ease 6s forwards;
         }
 
-        @keyframes fadeOut {
-            from { opacity: 1; }
-            to { opacity: 0; visibility: hidden; }
+        @keyframes slideDownFade {
+            0% {
+                opacity: 1;
+                transform: translate(-50%, 0);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, 100px);
+                visibility: hidden;
+            }
         }
 
         @media (max-width: 768px) {
             .mobile-help {
                 display: block;
-                opacity: 1;
             }
         }
 
@@ -199,12 +212,12 @@
             </div>
         </a>
 
-        <a href="tel:+98900000000" class="list-wrapper">
+        <a href="tel:+989050000000" class="list-wrapper">
             <div class="list">
                 <div class="rank"><i class="fas fa-phone-alt"></i></div>
                 <div class="text">
                     <h4>شماره تماس</h4>
-                    <div class="hidden-text">09000000000</div>
+                    <div class="hidden-text">09050000000</div>
                 </div>
             </div>
         </a>
@@ -273,11 +286,6 @@
                     activeItem = null;
                 }
             });
-
-            // تایمر مخفی کردن راهنما
-            setTimeout(() => {
-                document.querySelector('.mobile-help').style.opacity = '0';
-            }, 6500);
 
         } else {
             // منطق دسکتاپ
