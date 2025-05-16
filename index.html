@@ -131,11 +131,18 @@
             font-size: 12px;
             margin-top: 20px;
             display: none;
+            animation: fadeOut 0.5s ease 6s forwards;
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; visibility: hidden; }
         }
 
         @media (max-width: 768px) {
             .mobile-help {
                 display: block;
+                opacity: 1;
             }
         }
 
@@ -154,7 +161,6 @@
         }
 
         .list.active .rank i {
-            /* color: white !important; */
             transform: scale(1.1);
         }
 
@@ -267,6 +273,11 @@
                     activeItem = null;
                 }
             });
+
+            // تایمر مخفی کردن راهنما
+            setTimeout(() => {
+                document.querySelector('.mobile-help').style.opacity = '0';
+            }, 6500);
 
         } else {
             // منطق دسکتاپ
