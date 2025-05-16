@@ -33,6 +33,7 @@
                         inset 5px 5px 10px rgba(0, 0, 0, 0.5),
                         inset 5px 5px 20px rgba(255, 255, 255, 0.2),
                         inset -5px -5px 15px rgba(0, 0, 0, 0.75);
+            position: relative;
         }
 
         .container h2 {
@@ -123,82 +124,48 @@
             -webkit-user-select: text;
         }
 
-        /* هاور دسکتاپ */
-        .container .list:hover::before {
-            width: 100%;
-            height: 100%;
-            left: 0;
-            border-radius: 50px;
-        }
-
-        .container .list:hover .hidden-text {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .container .list:hover .text h4 {
-            opacity: 0;
-            transform: translateY(-10px);
-        }
-
-        /* استایل راهنما فقط برای موبایل */
-        .guide {
+        /* استایل راهنمای موبایل */
+        .mobile-help {
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+            font-size: 12px;
+            margin-top: 20px;
             display: none;
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(5px);
-            padding: 12px 25px;
-            border-radius: 25px;
-            color: #fff;
-            font-size: 13px;
-            align-items: center;
-            gap: 10px;
-            border: 1px solid rgba(255,255,255,0.2);
-            animation: guideFade 1.5s ease-out;
         }
 
-        @media (hover: none) and (max-width: 1024px) {
-            .guide {
-                display: flex;
+        @media (max-width: 768px) {
+            .mobile-help {
+                display: block;
             }
         }
 
-        @keyframes guideFade {
-            0% { opacity: 0; transform: translateX(-50%) translateY(20px); }
-            100% { opacity: 1; transform: translateX(-50%) translateY(0); }
+        /* استایل‌های فعال */
+        .list.active::before {
+            width: 100% !important;
+            height: 100% !important;
+            left: 0 !important;
+            border-radius: 50px !important;
+            background: #d32f2f !important;
         }
 
-        .guide i {
-            font-size: 16px;
+        .list.active .rank {
+            background: #262626 !important;
+            transform: scale(0.8);
         }
 
-        @media (max-width: 480px) {
-            .container {
-                width: 90%;
-                padding: 20px;
-            }
-            
-            .container h2 {
-                font-size: 22px;
-            }
-            
-            .text h4 {
-                font-size: 14px;
-            }
-            
-            .hidden-text {
-                font-size: 12px;
-                padding-right: 40px;
-            }
+        .list.active .rank i {
+            /* color: white !important; */
+            transform: scale(1.1);
+        }
 
-            .guide {
-                width: 85%;
-                flex-direction: column;
-                padding: 15px;
-            }
+        .list.active .hidden-text {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
+        .list.active .text h4 {
+            opacity: 0 !important;
+            transform: translateY(-10px) !important;
         }
     </style>
 </head>
@@ -235,38 +202,25 @@
                 </div>
             </div>
         </a>
-    </div>
 
-    <!-- راهنمای موبایل -->
-    <div class="guide">
-        <div>
-            <i class="fas fa-hand-point-up"></i>
-            لمس کوتاه = مشاهده اطلاعات
-        </div>
-        <div>
-            <i class="fas fa-hourglass-start"></i>
-            لمس طولانی = بازکردن لینک
+        <div class="mobile-help">
+            📱 برای مشاهده اطلاعات: لمس کوتاه<br>
+            ⏳ برای باز شدن لینک: لمس طولانی‌تر
         </div>
     </div>
 
     <script>
         const lists = document.querySelectorAll('.list');
         const isTouchDevice = 'ontouchstart' in window;
+        let longPressTimer;
+        let activeItem = null;
 
-        // فقط برای موبایل
         if(isTouchDevice) {
-            let longPressTimer;
-            let activeItem = null;
-
+            // فعال‌سازی نمایش متن
             const activatePersistent = (item) => {
-                if(activeItem) activeItem.classList.remove('persistent');
-                item.classList.add('persistent');
+                if(activeItem) activeItem.classList.remove('active');
+                item.classList.add('active');
                 activeItem = item;
-            };
-
-            const deactivatePersistent = () => {
-                if(activeItem) activeItem.classList.remove('persistent');
-                activeItem = null;
             };
 
             // کپی متن
@@ -287,8 +241,8 @@
                     longPressTimer = setTimeout(() => {
                         const link = list.closest('.list-wrapper').href;
                         window.open(link, '_blank');
-                        deactivatePersistent();
-                    }, 500);
+                        list.classList.remove('active');
+                    }, 700);
                 });
 
                 list.addEventListener('touchend', (e) => {
@@ -302,18 +256,15 @@
                 list.addEventListener('touchmove', (e) => {
                     e.preventDefault();
                     clearTimeout(longPressTimer);
+                    list.classList.remove('active');
                 });
             });
-
-            // مخفی کردن خودکار راهنما
-            setTimeout(() => {
-                document.querySelector('.guide').style.display = 'none';
-            }, 5000);
 
             // کلیک خارج
             document.addEventListener('click', (e) => {
                 if(!e.target.closest('.list')) {
-                    deactivatePersistent();
+                    activeItem?.classList.remove('active');
+                    activeItem = null;
                 }
             });
 
@@ -321,11 +272,11 @@
             // منطق دسکتاپ
             lists.forEach(list => {
                 list.addEventListener('mouseenter', () => {
-                    list.classList.add('persistent');
+                    list.classList.add('active');
                 });
 
                 list.addEventListener('mouseleave', () => {
-                    list.classList.remove('persistent');
+                    list.classList.remove('active');
                 });
 
                 list.addEventListener('click', (e) => {
