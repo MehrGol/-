@@ -9,11 +9,7 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-
-    <!-- برای آیفون و آیپد -->
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-
-    <!-- برای اندروید -->
     <link rel="manifest" href="site.webmanifest">
     
     <style>
@@ -36,7 +32,7 @@
 
         .container {
             width: 350px;
-            background-color: linear-gradient(to bottom, #2D1B7B 30%, #6A4C93 100%);
+            background: linear-gradient(to bottom, #2D1B7B 30%, #6A4C93 100%);
             border-radius: 30px;
             padding: 30px;
             box-shadow: 25px 25px 55px rgba(0, 0, 0, 0.25),
@@ -137,7 +133,6 @@
             color: #FFFFFF;
         }
 
-        /* استایل پیشرفته راهنمای موبایل */
         .mobile-help {
             color: rgba(255,255,255,0.9);
             text-align: center;
@@ -149,7 +144,7 @@
             width: 90%;
             max-width: 300px;
             padding: 12px;
-            background: #29294eaa; /* نسخه شفاف از #2D1B7B */
+            background: #29294eaa;
             border-radius: 15px;
             backdrop-filter: blur(5px);
             animation: smoothExit 1.2s cubic-bezier(0.4, 0, 0.2, 1) 6s forwards;
@@ -180,7 +175,6 @@
             }
         }
 
-        /* استایل‌های فعال */
         .list.active::before {
             width: 100% !important;
             height: 100% !important;
@@ -250,7 +244,6 @@
     </div>
 
     <script>
-        // اسکریپت بدون تغییر از نسخه قبلی
         const lists = document.querySelectorAll('.list');
         const isTouchDevice = 'ontouchstart' in window;
         let longPressTimer;
@@ -262,16 +255,6 @@
                 item.classList.add('active');
                 activeItem = item;
             };
-
-            lists.forEach(list => {
-                const hiddenText = list.querySelector('.hidden-text');
-                hiddenText.addEventListener('click', (e) => {
-                    const text = e.target.innerText;
-                    navigator.clipboard.writeText(text).then(() => {
-                        alert('متن کپی شد: ' + text);
-                    });
-                });
-            });
 
             lists.forEach(list => {
                 list.addEventListener('touchstart', (e) => {
