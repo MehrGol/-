@@ -244,38 +244,37 @@
     <script>
         const lists = document.querySelectorAll('.list');
         const isTouchDevice = 'ontouchstart' in window;
-        let longPressTimer;
 
         if (isTouchDevice) {
             lists.forEach(list => {
+                let longPressTimer;
+                let longPressTriggered = false;
+
                 list.addEventListener('touchstart', (e) => {
-                    e.preventDefault();
-                    
-                    // نمایش اطلاعات بدون نیاز به فعال‌سازی دستی
+                    longPressTriggered = false;
                     list.classList.add('active');
-                    
-                    // شروع تایمر ۴ ثانیه
+
                     longPressTimer = setTimeout(() => {
+                        longPressTriggered = true;
                         const link = list.closest('.list-wrapper').href;
                         window.open(link, '_blank');
                         list.classList.remove('active');
                     }, 4000);
                 });
 
-                list.addEventListener('touchend', (e) => {
-                    e.preventDefault();
+                list.addEventListener('touchend', () => {
                     clearTimeout(longPressTimer);
-                    list.classList.remove('active');
+                    if (!longPressTriggered) {
+                        list.classList.remove('active');
+                    }
                 });
 
-                list.addEventListener('touchmove', (e) => {
-                    e.preventDefault();
+                list.addEventListener('touchmove', () => {
                     clearTimeout(longPressTimer);
                     list.classList.remove('active');
                 });
             });
         } else {
-            // منطق دسکتاپ
             lists.forEach(list => {
                 list.addEventListener('mouseenter', () => {
                     list.classList.add('active');
