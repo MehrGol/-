@@ -245,23 +245,16 @@
         const lists = document.querySelectorAll('.list');
         const isTouchDevice = 'ontouchstart' in window;
         let longPressTimer;
-        let activeItem = null;
 
-        if(isTouchDevice) {
-            const activatePersistent = (item) => {
-                if(activeItem) activeItem.classList.remove('active');
-                item.classList.add('active');
-                activeItem = item;
-            };
-
+        if (isTouchDevice) {
             lists.forEach(list => {
                 list.addEventListener('touchstart', (e) => {
                     e.preventDefault();
                     
-                    // فعال سازی بلافاصله پس از لمس
-                    activatePersistent(list);
+                    // نمایش اطلاعات بدون نیاز به فعال‌سازی دستی
+                    list.classList.add('active');
                     
-                    // تنظیم تایمر ۴ ثانیه
+                    // شروع تایمر ۴ ثانیه
                     longPressTimer = setTimeout(() => {
                         const link = list.closest('.list-wrapper').href;
                         window.open(link, '_blank');
@@ -272,6 +265,7 @@
                 list.addEventListener('touchend', (e) => {
                     e.preventDefault();
                     clearTimeout(longPressTimer);
+                    list.classList.remove('active');
                 });
 
                 list.addEventListener('touchmove', (e) => {
@@ -280,15 +274,8 @@
                     list.classList.remove('active');
                 });
             });
-
-            document.addEventListener('click', (e) => {
-                if(!e.target.closest('.list')) {
-                    activeItem?.classList.remove('active');
-                    activeItem = null;
-                }
-            });
-
         } else {
+            // منطق دسکتاپ
             lists.forEach(list => {
                 list.addEventListener('mouseenter', () => {
                     list.classList.add('active');
