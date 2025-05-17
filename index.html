@@ -1,296 +1,328 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>پل ارتباطی ما</title>
-    <link href="https://cdn.fontcdn.ir/Font/Persian/Iranian-Sans/Iranian-Sans.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="manifest" href="site.webmanifest">
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Iranian Sans", sans-serif;
-            direction: rtl;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>پل ارتباطی ما</title>
+  <link href="https://cdn.fontcdn.ir/Font/Persian/Iranian-Sans/Iranian-Sans.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Iranian Sans", sans-serif;
+      direction: rtl;
+    }
 
-        body {
-            background-color: #1A1A2E;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            position: relative;
-        }
+    body {
+      background-color: #1A1A2E;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      position: relative;
+    }
 
-        .container {
-            width: 350px;
-            background: linear-gradient(to bottom, #2D1B7B 30%, #6A4C93 100%);
-            border-radius: 30px;
-            padding: 30px;
-            box-shadow: 25px 25px 55px rgba(0, 0, 0, 0.25),
-                        10px 10px 50px rgba(0, 0, 0, 0.25),
-                        inset 5px 5px 10px rgba(0, 0, 0, 0.5),
-                        inset 5px 5px 20px rgba(255, 255, 255, 0.2),
-                        inset -5px -5px 15px rgba(0, 0, 0, 0.75);
-            position: relative;
-        }
+    .container {
+      width: 350px;
+      background: linear-gradient(to bottom, #2D1B7B 30%, #6A4C93 100%);
+      border-radius: 30px;
+      padding: 30px;
+      box-shadow: 25px 25px 55px rgba(0, 0, 0, 0.25),
+                  10px 10px 50px rgba(0, 0, 0, 0.25),
+                  inset 5px 5px 10px rgba(0, 0, 0, 0.5),
+                  inset 5px 5px 20px rgba(255, 255, 255, 0.2),
+                  inset -5px -5px 15px rgba(0, 0, 0, 0.75);
+    }
 
-        .container h2 {
-            color: white;
-            font-size: 25px;
-            text-align: center;
-            margin-bottom: 30px;
-        }
+    .container h2 {
+      color: white;
+      font-size: 25px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
 
-        .list-wrapper {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
+    .list-wrapper {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      margin: 20px 0;
+    }
 
-        .container .list {
-            display: flex;
-            align-items: center;
-            margin: 20px 0;
-            position: relative;
-            height: 60px;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
+    .list {
+      display: flex;
+      align-items: center;
+      position: relative;
+      height: 60px;
+      cursor: pointer;
+    }
 
-        .container .list::before {
-            content: '';
-            width: 50px;
-            height: 50px;
-            background: #FEA5D8;
-            border-radius: 50%;
-            position: absolute;
-            left: 5px;
-            top: 50%;
-            transform: translateY(-50%);
-            transition: all 0.6s;
-            z-index: 1;
-        }
+    .list::before {
+      content: '';
+      width: 50px;
+      height: 50px;
+      background: #FEA5D8;
+      border-radius: 50%;
+      position: absolute;
+      left: 5px;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: all 0.6s;
+      z-index: 1;
+    }
 
-        .container .list .rank {
-            width: 50px;
-            height: 50px;
-            background: #fff;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            z-index: 2;
-            transition: all 0.4s;
-        }
+    .rank {
+      width: 50px;
+      height: 50px;
+      background: #fff;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
 
-        .container .list .rank i {
-            font-size: 24px;
-            transition: 0.3s;
-        }
+    .progress-ring {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 50px;
+      height: 50px;
+      transform: rotate(-90deg);
+      pointer-events: none;
+    }
 
-        .fa-instagram { color: #E1306C; }
-        .fa-telegram { color: #0088cc; }
-        .fa-phone-alt { color: #25D366; }
+    .progress-ring circle {
+      stroke: #ffd6f7;
+      stroke-width: 4;
+      fill: transparent;
+      stroke-dasharray: 157;
+      stroke-dashoffset: 157;
+    }
 
-        .text {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            color: white;
-            z-index: 3;
-            padding-left: 5px;
-        }
+    .rank i {
+      font-size: 24px;
+      z-index: 3;
+    }
 
-        .text h4 {
-            font-size: 16px;
-            transition: 0.3s;
-            color: #FFB6C1;
-        }
+    .fa-instagram { color: #E1306C; }
+    .fa-telegram { color: #0088cc; }
+    .fa-phone-alt { color: #25D366; }
 
-        .hidden-text {
-            font-size: 16px;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: 0.3s;
-            position: absolute;
-            padding-right: 60px;
-            color: #FFFFFF;
-        }
+    .text {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: white;
+      z-index: 3;
+      padding-left: 5px;
+    }
 
-        .mobile-help {
-            color: rgba(255,255,255,0.9);
-            text-align: center;
-            font-size: 13px;
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90%;
-            max-width: 300px;
-            padding: 12px;
-            background: #29294eaa;
-            border-radius: 15px;
-            backdrop-filter: blur(5px);
-            animation: smoothExit 1.2s cubic-bezier(0.4, 0, 0.2, 1) 6s forwards;
-            opacity: 1;
-            display: none;
-            line-height: 1.5;
-        }
+    .text h4 {
+      font-size: 16px;
+      transition: 0.3s;
+      color: #FFB6C1;
+    }
 
-        @keyframes smoothExit {
-            0% {
-                opacity: 1;
-                transform: translate(-50%, 0) scale(1);
-            }
-            70% {
-                opacity: 0.3;
-                transform: translate(-50%, 120px) scale(0.95);
-            }
-            100% {
-                opacity: 0;
-                transform: translate(-50%, 150px) scale(0.9);
-                visibility: hidden;
-            }
-        }
+    .hidden-text {
+      font-size: 16px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: 0.3s;
+      position: absolute;
+      padding-right: 60px;
+      color: #FFFFFF;
+    }
 
-        @media (max-width: 768px) {
-            .mobile-help {
-                display: block;
-            }
-        }
+    .mobile-help {
+      color: rgba(255,255,255,0.9);
+      text-align: center;
+      font-size: 13px;
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 300px;
+      padding: 12px;
+      background: #29294eaa;
+      border-radius: 15px;
+      backdrop-filter: blur(5px);
+      animation: smoothExit 1.2s cubic-bezier(0.4, 0, 0.2, 1) 6s forwards;
+      opacity: 1;
+      display: none;
+      line-height: 1.5;
+    }
 
-        .list.active::before {
-            width: 100% !important;
-            height: 100% !important;
-            left: 0 !important;
-            border-radius: 50px !important;
-            background: #ef8cc4cd  !important;
-        }
+    @keyframes smoothExit {
+      0% { opacity: 1; transform: translate(-50%, 0) scale(1); }
+      70% { opacity: 0.3; transform: translate(-50%, 120px) scale(0.95); }
+      100% { opacity: 0; transform: translate(-50%, 150px) scale(0.9); visibility: hidden; }
+    }
 
-        .list.active .rank {
-            background: #1A1A2E !important;
-            transform: scale(0.8);
-        }
+    @media (max-width: 768px) {
+      .mobile-help { display: block; }
+    }
 
-        .list.active .rank i {
-            transform: scale(1.1);
-        }
+    .list.active::before {
+      width: 100% !important;
+      height: 100% !important;
+      left: 0 !important;
+      border-radius: 50px !important;
+      background: #ef8cc4cd  !important;
+    }
 
-        .list.active .hidden-text {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
-        }
+    .list.active .rank {
+      background: #1A1A2E !important;
+      transform: scale(0.8);
+    }
 
-        .list.active .text h4 {
-            opacity: 0 !important;
-            transform: translateY(-10px) !important;
-        }
-    </style>
+    .list.active .hidden-text {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+
+    .list.active .text h4 {
+      opacity: 0 !important;
+      transform: translateY(-10px) !important;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h2>پل ارتباطی ما 🌸</h2>
+  <div class="container">
+    <h2>پل ارتباطی ما 🌸</h2>
 
-        <a href="https://instagram.com/MehrGol_Organic" target="_blank" class="list-wrapper">
-            <div class="list">
-                <div class="rank"><i class="fab fa-instagram"></i></div>
-                <div class="text">
-                    <h4>پیج اینستاگرام</h4>
-                    <div class="hidden-text">MehrGol_Organic</div>
-                </div>
-            </div>
-        </a>
-
-        <a href="https://t.me/MehrGol_Organic" target="_blank" class="list-wrapper">
-            <div class="list">
-                <div class="rank"><i class="fab fa-telegram"></i></div>
-                <div class="text">
-                    <h4>آیدی تلگرام</h4>
-                    <div class="hidden-text">MehrGol_Organic</div>
-                </div>
-            </div>
-        </a>
-
-        <a href="tel:+989123456789" class="list-wrapper">
-            <div class="list">
-                <div class="rank"><i class="fas fa-phone-alt"></i></div>
-                <div class="text">
-                    <h4>شماره تماس</h4>
-                    <div class="hidden-text">۰۹۱۲۳۴۵۶۷۸۹</div>
-                </div>
-            </div>
-        </a>
-
-        <div class="mobile-help">
-            📱 برای مشاهده اطلاعات: لمس کوتاه<br>
-            ⏳ برای باز شدن لینک: لمس طولانی‌تر (۴ ثانیه)
+    <div class="list-wrapper" data-href="https://instagram.com/MehrGol_Organic">
+      <div class="list">
+        <div class="rank">
+          <svg class="progress-ring" width="50" height="50">
+            <circle r="25" cx="25" cy="25"></circle>
+          </svg>
+          <i class="fab fa-instagram"></i>
         </div>
+        <div class="text">
+          <h4>پیج اینستاگرام</h4>
+          <div class="hidden-text">MehrGol_Organic</div>
+        </div>
+      </div>
     </div>
 
-    <script>
-        const lists = document.querySelectorAll('.list');
-        const isTouchDevice = 'ontouchstart' in window;
+    <div class="list-wrapper" data-href="https://t.me/MehrGol_Organic">
+      <div class="list">
+        <div class="rank">
+          <svg class="progress-ring" width="50" height="50">
+            <circle r="25" cx="25" cy="25"></circle>
+          </svg>
+          <i class="fab fa-telegram"></i>
+        </div>
+        <div class="text">
+          <h4>آیدی تلگرام</h4>
+          <div class="hidden-text">MehrGol_Organic</div>
+        </div>
+      </div>
+    </div>
 
-        if (isTouchDevice) {
-            lists.forEach(list => {
-                let longPressTimer;
-                let longPressTriggered = false;
+    <div class="list-wrapper" data-href="tel:+989123456789">
+      <div class="list">
+        <div class="rank">
+          <svg class="progress-ring" width="50" height="50">
+            <circle r="25" cx="25" cy="25"></circle>
+          </svg>
+          <i class="fas fa-phone-alt"></i>
+        </div>
+        <div class="text">
+          <h4>شماره تماس</h4>
+          <div class="hidden-text">۰۹۱۲۳۴۵۶۷۸۹</div>
+        </div>
+      </div>
+    </div>
 
-                list.addEventListener('touchstart', (e) => {
-                    longPressTriggered = false;
-                    list.classList.add('active');
+    <div class="mobile-help">
+      📱 برای مشاهده اطلاعات: لمس کوتاه<br>
+      ⏳ برای باز شدن لینک: لمس طولانی‌تر (۴ ثانیه)
+    </div>
+  </div>
 
-                    longPressTimer = setTimeout(() => {
-                        longPressTriggered = true;
-                        const link = list.closest('.list-wrapper').href;
-                        window.open(link, '_blank');
-                        list.classList.remove('active');
-                    }, 4000);
-                });
+  <audio id="clickSound" preload="auto">
+    <source src="data:audio/mp3;base64,//uQxAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAACAAACcQCA..." type="audio/mp3">
+  </audio>
 
-                list.addEventListener('touchend', () => {
-                    clearTimeout(longPressTimer);
-                    if (!longPressTriggered) {
-                        list.classList.remove('active');
-                    }
-                });
+  <script>
+    const lists = document.querySelectorAll('.list');
+    const isTouchDevice = 'ontouchstart' in window;
+    const clickSound = document.getElementById('clickSound');
 
-                list.addEventListener('touchmove', () => {
-                    clearTimeout(longPressTimer);
-                    list.classList.remove('active');
-                });
-            });
-        } else {
-            lists.forEach(list => {
-                list.addEventListener('mouseenter', () => {
-                    list.classList.add('active');
-                });
+    function animateRing(ring, duration) {
+      const circle = ring.querySelector('circle');
+      const radius = circle.r.baseVal.value;
+      const circumference = 2 * Math.PI * radius;
+      circle.style.strokeDasharray = circumference;
+      circle.style.strokeDashoffset = circumference;
 
-                list.addEventListener('mouseleave', () => {
-                    list.classList.remove('active');
-                });
+      let start;
+      function animate(time) {
+        if (!start) start = time;
+        const elapsed = time - start;
+        const progress = Math.min(elapsed / duration, 1);
+        circle.style.strokeDashoffset = circumference * (1 - progress);
+        if (progress < 1) requestAnimationFrame(animate);
+      }
+      requestAnimationFrame(animate);
+    }
 
-                list.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const link = list.closest('.list-wrapper').href;
-                    window.open(link, '_blank');
-                });
-            });
-        }
-    </script>
+    if (isTouchDevice) {
+      lists.forEach(list => {
+        let longPressTimer;
+        let longPressTriggered = false;
+        const ring = list.querySelector('.progress-ring');
+        const wrapper = list.closest('.list-wrapper');
+        const link = wrapper.dataset.href;
+
+        list.addEventListener('touchstart', (e) => {
+          e.preventDefault();
+          longPressTriggered = false;
+          list.classList.add('active');
+          if (ring) animateRing(ring, 4000);
+
+          longPressTimer = setTimeout(() => {
+            longPressTriggered = true;
+            clickSound.play();
+            window.open(link, '_blank');
+            list.classList.remove('active');
+          }, 4000);
+        }, { passive: false });
+
+        list.addEventListener('touchend', (e) => {
+          e.preventDefault();
+          clearTimeout(longPressTimer);
+          if (!longPressTriggered) list.classList.remove('active');
+        }, { passive: false });
+
+        list.addEventListener('touchmove', (e) => {
+          e.preventDefault();
+          clearTimeout(longPressTimer);
+          list.classList.remove('active');
+        }, { passive: false });
+      });
+    } else {
+      lists.forEach(list => {
+        const wrapper = list.closest('.list-wrapper');
+        const link = wrapper.dataset.href;
+
+        list.addEventListener('mouseenter', () => list.classList.add('active'));
+        list.addEventListener('mouseleave', () => list.classList.remove('active'));
+        list.addEventListener('click', (e) => {
+          e.preventDefault();
+          window.open(link, '_blank');
+        });
+      });
+    }
+  </script>
 </body>
 </html>
