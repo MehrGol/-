@@ -225,19 +225,19 @@
             </div>
         </a>
 
-        <a href="tel:+989361363867" class="list-wrapper">
+        <a href="tel:+989123456789" class="list-wrapper">
             <div class="list">
                 <div class="rank"><i class="fas fa-phone-alt"></i></div>
                 <div class="text">
                     <h4>شماره تماس</h4>
-                    <div class="hidden-text">09361363867</div>
+                    <div class="hidden-text">۰۹۱۲۳۴۵۶۷۸۹</div>
                 </div>
             </div>
         </a>
 
         <div class="mobile-help">
             📱 برای مشاهده اطلاعات: لمس کوتاه<br>
-            ⏳ برای باز شدن لینک: لمس طولانی‌تر
+            ⏳ برای باز شدن لینک: لمس طولانی‌تر (۴ ثانیه)
         </div>
     </div>
 
@@ -257,19 +257,21 @@
             lists.forEach(list => {
                 list.addEventListener('touchstart', (e) => {
                     e.preventDefault();
+                    
+                    // فعال سازی بلافاصله پس از لمس
+                    activatePersistent(list);
+                    
+                    // تنظیم تایمر ۴ ثانیه
                     longPressTimer = setTimeout(() => {
                         const link = list.closest('.list-wrapper').href;
                         window.open(link, '_blank');
                         list.classList.remove('active');
-                    }, 700);
+                    }, 4000);
                 });
 
                 list.addEventListener('touchend', (e) => {
                     e.preventDefault();
                     clearTimeout(longPressTimer);
-                    if(!activeItem || activeItem !== list) {
-                        activatePersistent(list);
-                    }
                 });
 
                 list.addEventListener('touchmove', (e) => {
