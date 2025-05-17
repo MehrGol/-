@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>پل ارتباطی ما</title>
 
-  <!-- Favicon کامل -->
+  <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
 
-  <!-- فونت و آیکون‌ها -->
+  <!-- Font + Icons -->
   <link href="https://cdn.fontcdn.ir/Font/Persian/Iranian-Sans/Iranian-Sans.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
@@ -66,6 +66,7 @@
       position: relative;
       height: 60px;
       cursor: pointer;
+      transition: background 0.3s;
     }
 
     .list::before {
@@ -94,27 +95,8 @@
       z-index: 2;
     }
 
-    .progress-ring {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 50px;
-      height: 50px;
-      transform: rotate(-90deg);
-      pointer-events: none;
-    }
-
-    .progress-ring circle {
-      stroke: #ffd6f7;
-      stroke-width: 4;
-      fill: transparent;
-      stroke-dasharray: 157;
-      stroke-dashoffset: 157;
-    }
-
     .rank i {
       font-size: 24px;
-      z-index: 3;
     }
 
     .fa-instagram { color: #E1306C; }
@@ -136,7 +118,6 @@
 
     .text h4 {
       font-size: 16px;
-      transition: 0.3s;
       color: #FFB6C1;
     }
 
@@ -208,14 +189,9 @@
   <div class="container">
     <h2>پل ارتباطی ما 🌸</h2>
 
-    <div class="list-wrapper" data-href="https://instagram.com/MehrGol_Organic">
+    <div class="list-wrapper" data-href="instagram://user?username=MehrGol_Organic">
       <div class="list">
-        <div class="rank">
-          <svg class="progress-ring" width="50" height="50">
-            <circle r="25" cx="25" cy="25"></circle>
-          </svg>
-          <i class="fab fa-instagram"></i>
-        </div>
+        <div class="rank"><i class="fab fa-instagram"></i></div>
         <div class="text">
           <h4>پیج اینستاگرام</h4>
           <div class="hidden-text">MehrGol_Organic</div>
@@ -223,14 +199,9 @@
       </div>
     </div>
 
-    <div class="list-wrapper" data-href="https://t.me/MehrGol_Organic">
+    <div class="list-wrapper" data-href="tg://resolve?domain=MehrGol_Organic">
       <div class="list">
-        <div class="rank">
-          <svg class="progress-ring" width="50" height="50">
-            <circle r="25" cx="25" cy="25"></circle>
-          </svg>
-          <i class="fab fa-telegram"></i>
-        </div>
+        <div class="rank"><i class="fab fa-telegram"></i></div>
         <div class="text">
           <h4>آیدی تلگرام</h4>
           <div class="hidden-text">MehrGol_Organic</div>
@@ -240,12 +211,7 @@
 
     <div class="list-wrapper" data-href="tel:+989123456789">
       <div class="list">
-        <div class="rank">
-          <svg class="progress-ring" width="50" height="50">
-            <circle r="25" cx="25" cy="25"></circle>
-          </svg>
-          <i class="fas fa-phone-alt"></i>
-        </div>
+        <div class="rank"><i class="fas fa-phone-alt"></i></div>
         <div class="text">
           <h4>شماره تماس</h4>
           <div class="hidden-text">۰۹۱۲۳۴۵۶۷۸۹</div>
@@ -259,7 +225,6 @@
     </div>
   </div>
 
-  <!-- صدای کلیک -->
   <audio id="clickSound" preload="auto">
     <source src="data:audio/mp3;base64,//uQxAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAACAAACcQCA..." type="audio/mp3">
   </audio>
@@ -269,29 +234,10 @@
     const isTouchDevice = 'ontouchstart' in window;
     const clickSound = document.getElementById('clickSound');
 
-    function animateRing(ring, duration) {
-      const circle = ring.querySelector('circle');
-      const radius = circle.r.baseVal.value;
-      const circumference = 2 * Math.PI * radius;
-      circle.style.strokeDasharray = circumference;
-      circle.style.strokeDashoffset = circumference;
-
-      let start;
-      function animate(time) {
-        if (!start) start = time;
-        const elapsed = time - start;
-        const progress = Math.min(elapsed / duration, 1);
-        circle.style.strokeDashoffset = circumference * (1 - progress);
-        if (progress < 1) requestAnimationFrame(animate);
-      }
-      requestAnimationFrame(animate);
-    }
-
     if (isTouchDevice) {
       lists.forEach(list => {
         let longPressTimer;
         let longPressTriggered = false;
-        const ring = list.querySelector('.progress-ring');
         const wrapper = list.closest('.list-wrapper');
         const link = wrapper.dataset.href;
 
@@ -299,12 +245,11 @@
           e.preventDefault();
           longPressTriggered = false;
           list.classList.add('active');
-          if (ring) animateRing(ring, 4000);
 
           longPressTimer = setTimeout(() => {
             longPressTriggered = true;
             clickSound.play();
-            window.location.href = link; // ✅ مستقیم باز کن
+            window.location.href = link;
             list.classList.remove('active');
           }, 4000);
         }, { passive: false });
@@ -330,7 +275,7 @@
         list.addEventListener('mouseleave', () => list.classList.remove('active'));
         list.addEventListener('click', (e) => {
           e.preventDefault();
-          window.location.href = link; // ✅ مستقیم
+          window.location.href = link;
         });
       });
     }
