@@ -1,194 +1,199 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>پل ارتباطی ما</title>
-    <link href="https://cdn.fontcdn.ir/Font/Persian/Iranian-Sans/Iranian-Sans.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="manifest" href="site.webmanifest">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Iranian Sans", sans-serif;
-            direction: rtl;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>پل ارتباطی ما</title>
 
-        body {
-            background-color: #1A1A2E;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            position: relative;
-            overflow: hidden;
-        }
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
 
-        .container {
-            width: 350px;
-            background: linear-gradient(to bottom, #2D1B7B 30%, #6A4C93 100%);
-            border-radius: 30px;
-            padding: 30px;
-            box-shadow: 25px 25px 55px rgba(0, 0, 0, 0.25),
-                        10px 10px 50px rgba(0, 0, 0, 0.25),
-                        inset 5px 5px 10px rgba(0, 0, 0, 0.5),
-                        inset 5px 5px 20px rgba(255, 255, 255, 0.2),
-                        inset -5px -5px 15px rgba(0, 0, 0, 0.75);
-            margin-bottom: 20px;
-        }
+  <!-- Fonts & Icons -->
+  <link href="https://cdn.fontcdn.ir/Font/Persian/Iranian-Sans/Iranian-Sans.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-        .container h2 {
-            color: white;
-            font-size: 25px;
-            text-align: center;
-            margin-bottom: 30px;
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Iranian Sans", sans-serif;
+      direction: rtl;
+    }
 
-        .list-wrapper {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-            margin-bottom: 20px;
-        }
+    body {
+      background-color: #1A1A2E;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      position: relative;
+      padding: 20px; /* افزودن پدینگ برای فضای بهتر */
+    }
 
-        .list {
-            display: flex;
-            align-items: center;
-            height: 80px;
-            cursor: pointer;
-            background: #FEA5D8;
-            border-radius: 20px;
-            padding: 15px;
-            transition: 0.3s;
-        }
+    .container {
+      width: 350px;
+      background: linear-gradient(to bottom, #2D1B7B 30%, #6A4C93 100%);
+      border-radius: 30px;
+      padding: 30px;
+      box-shadow: 25px 25px 55px rgba(0, 0, 0, 0.25),
+                  10px 10px 50px rgba(0, 0, 0, 0.25),
+                  inset 5px 5px 10px rgba(0, 0, 0, 0.5),
+                  inset 5px 5px 20px rgba(255, 255, 255, 0.2),
+                  inset -5px -5px 15px rgba(0, 0, 0, 0.75);
+      margin-top: -40px; /* جابه‌جایی کانتینر به بالا */
+    }
 
-        .list:hover {
-            transform: scale(1.02);
-        }
+    .container h2 {
+      color: white;
+      font-size: 25px;
+      text-align: center;
+      margin-bottom: 25px; /* کاهش فاصله */
+    }
 
-        .rank {
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    .list-wrapper {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      margin-bottom: 20px; /* کاهش فاصله */
+    }
 
-        .rank i {
-            font-size: 24px;
-        }
+    .list {
+      display: flex;
+      align-items: center;
+      position: relative;
+      height: 90px; /* کاهش ارتفاع */
+      cursor: pointer;
+      background: #FEA5D8;
+      border-radius: 20px;
+      padding: 12px;
+      transition: 0.3s;
+    }
 
-        .fa-instagram { color: #E1306C; }
-        .fa-telegram { color: #0088cc; }
-        .fa-phone-alt { color: #25D366; }
+    .list:hover {
+      transform: scale(1.02);
+    }
 
-        .text {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
-            padding-right: 15px;
-        }
+    .rank {
+      width: 45px; /* کاهش سایز */
+      height: 45px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-        .text h4 {
-            font-size: 16px;
-            margin-bottom: 8px;
-        }
+    .rank i {
+      font-size: 22px; /* کاهش سایز آیکون */
+    }
 
-        .hidden-text {
-            font-size: 16px;
-            opacity: 0;
-            transform: translateY(15px);
-            animation: slideUp 0.5s ease 2s forwards;
-            color: #FFFFFF;
-        }
+    .fa-instagram { color: #E1306C; }
+    .fa-telegram { color: #0088cc; }
+    .fa-phone-alt { color: #25D366; }
 
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    .text {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      padding-right: 10px;
+    }
 
-        .mobile-help {
-            color: rgba(255,255,255,0.9);
-            text-align: center;
-            font-size: 13px;
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90%;
-            max-width: 300px;
-            padding: 12px;
-            background: #29294eaa;
-            border-radius: 15px;
-            backdrop-filter: blur(5px);
-            animation: smoothExit 1.2s cubic-bezier(0.4, 0, 0.2, 1) 6s forwards;
-        }
+    .text h4 {
+      font-size: 15px; /* کاهش سایز فونت */
+      margin-bottom: 6px;
+    }
 
-        @keyframes smoothExit {
-            0% { opacity: 1; }
-            100% { opacity: 0; visibility: hidden; }
-        }
+    .hidden-text {
+      font-size: 15px;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: slideUp 0.5s ease 2s forwards;
+      color: #FFFFFF;
+    }
 
-        @media (max-width: 768px) {
-            .container {
-                width: 90%;
-                padding: 20px;
-            }
-            .list {
-                height: 70px;
-            }
-        }
-    </style>
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* راهنمای موبایل - موقعیت جدید */
+    .mobile-help {
+      color: rgba(255,255,255,0.9);
+      text-align: center;
+      font-size: 13px;
+      position: fixed;
+      top: 85vh; /* موقعیت بالاتر */
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 300px;
+      padding: 12px;
+      background: #29294eaa;
+      border-radius: 15px;
+      backdrop-filter: blur(5px);
+      animation: smoothExit 1.2s cubic-bezier(0.4, 0, 0.2, 1) 6s forwards;
+      z-index: 10;
+    }
+
+    @keyframes smoothExit {
+      0% { opacity: 1; }
+      100% { opacity: 0; visibility: hidden; }
+    }
+
+    @media (max-width: 768px) {
+      .mobile-help { 
+        display: block;
+        top: 80vh; /* تنظیم موقعیت برای موبایل */
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h2>پل ارتباطی ما 🌸</h2>
+  <div class="container">
+    <h2>پل ارتباطی ما 🌸</h2>
 
-        <a class="list-wrapper" href="instagram://user?username=MehrGol_Organic">
-            <div class="list">
-                <div class="rank"><i class="fab fa-instagram"></i></div>
-                <div class="text">
-                    <h4>پیج اینستاگرام</h4>
-                    <div class="hidden-text">MehrGol_Organic</div>
-                </div>
-            </div>
-        </a>
+    <a class="list-wrapper" href="instagram://user?username=MehrGol_Organic">
+      <div class="list">
+        <div class="rank"><i class="fab fa-instagram"></i></div>
+        <div class="text">
+          <h4>پیج اینستاگرام</h4>
+          <div class="hidden-text">MehrGol_Organic</div>
+        </div>
+      </div>
+    </a>
 
-        <a class="list-wrapper" href="tg://resolve?domain=MehrGol_Organic">
-            <div class="list">
-                <div class="rank"><i class="fab fa-telegram"></i></div>
-                <div class="text">
-                    <h4>آیدی تلگرام</h4>
-                    <div class="hidden-text">MehrGol_Organic</div>
-                </div>
-            </div>
-        </a>
+    <a class="list-wrapper" href="tg://resolve?domain=MehrGol_Organic">
+      <div class="list">
+        <div class="rank"><i class="fab fa-telegram"></i></div>
+        <div class="text">
+          <h4>آیدی تلگرام</h4>
+          <div class="hidden-text">MehrGol_Organic</div>
+        </div>
+      </div>
+    </a>
 
-        <a class="list-wrapper" href="tel:+989123456789">
-            <div class="list">
-                <div class="rank"><i class="fas fa-phone-alt"></i></div>
-                <div class="text">
-                    <h4>شماره تماس</h4>
-                    <div class="hidden-text">۰۹۱۲۳۴۵۶۷۸۹</div>
-                </div>
-            </div>
-        </a>
-    </div>
+    <a class="list-wrapper" href="tel:+989123456789">
+      <div class="list">
+        <div class="rank"><i class="fas fa-phone-alt"></i></div>
+        <div class="text">
+          <h4>شماره تماس</h4>
+          <div class="hidden-text">۰۹۱۲۳۴۵۶۷۸۹</div>
+        </div>
+      </div>
+    </a>
+  </div>
 
-    <div class="mobile-help">
-        📱 برای ورود، کادر مورد نظر را لمس کنید
-    </div>
+  <div class="mobile-help">
+    📱 برای ورود، کادر مورد نظر را لمس کنید
+  </div>
 </body>
 </html>
