@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fa">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -32,7 +33,8 @@
       align-items: center;
       min-height: 100vh;
       position: relative;
-      padding: 20px; /* افزودن پدینگ برای فضای بهتر */
+      padding: 20px;
+      /* افزودن پدینگ برای فضای بهتر */
     }
 
     .container {
@@ -41,35 +43,39 @@
       border-radius: 30px;
       padding: 30px;
       box-shadow: 25px 25px 55px rgba(0, 0, 0, 0.25),
-                  10px 10px 50px rgba(0, 0, 0, 0.25),
-                  inset 5px 5px 10px rgba(0, 0, 0, 0.5),
-                  inset 5px 5px 20px rgba(255, 255, 255, 0.2),
-                  inset -5px -5px 15px rgba(0, 0, 0, 0.75);
-      margin-top: -40px; /* جابه‌جایی کانتینر به بالا */
+        10px 10px 50px rgba(0, 0, 0, 0.25),
+        inset 5px 5px 10px rgba(0, 0, 0, 0.5),
+        inset 5px 5px 20px rgba(255, 255, 255, 0.2),
+        inset -5px -5px 15px rgba(0, 0, 0, 0.75);
+      margin-top: -40px;
+      /* جابه‌جایی کانتینر به بالا */
     }
 
     .container h2 {
       color: white;
       font-size: 25px;
       text-align: center;
-      margin-bottom: 25px; /* کاهش فاصله */
+      margin-bottom: 25px;
+      /* کاهش فاصله */
     }
 
     .list-wrapper {
       text-decoration: none;
       color: inherit;
       display: block;
-      margin-bottom: 20px; /* کاهش فاصله */
+      margin-bottom: 20px;
+      /* کاهش فاصله */
     }
 
     .list {
       display: flex;
       align-items: center;
       position: relative;
-      height: 90px; /* کاهش ارتفاع */
+      height: 60px;
+      /* کاهش ارتفاع */
       cursor: pointer;
       background: #FEA5D8;
-      border-radius: 20px;
+      border-radius: 30px;
       padding: 12px;
       transition: 0.3s;
     }
@@ -79,8 +85,9 @@
     }
 
     .rank {
-      width: 45px; /* کاهش سایز */
-      height: 45px;
+      width: 45px;
+      /* کاهش سایز */
+      height: 40px;
       background: rgba(255, 255, 255, 0.9);
       border-radius: 50%;
       display: flex;
@@ -89,12 +96,21 @@
     }
 
     .rank i {
-      font-size: 22px; /* کاهش سایز آیکون */
+      font-size: 22px;
+      /* کاهش سایز آیکون */
     }
 
-    .fa-instagram { color: #E1306C; }
-    .fa-telegram { color: #0088cc; }
-    .fa-phone-alt { color: #25D366; }
+    .fa-instagram {
+      color: #E1306C;
+    }
+
+    .fa-telegram {
+      color: #0088cc;
+    }
+
+    .fa-phone-alt {
+      color: #25D366;
+    }
 
     .text {
       width: 100%;
@@ -108,7 +124,8 @@
     }
 
     .text h4 {
-      font-size: 15px; /* کاهش سایز فونت */
+      font-size: 15px;
+      /* کاهش سایز فونت */
       margin-bottom: 6px;
     }
 
@@ -121,17 +138,25 @@
     }
 
     @keyframes slideUp {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* راهنمای موبایل - موقعیت جدید */
     .mobile-help {
-      color: rgba(255,255,255,0.9);
+      color: rgba(255, 255, 255, 0.9);
       text-align: center;
       font-size: 13px;
       position: fixed;
-      top: 85vh; /* موقعیت بالاتر */
+      top: 85vh;
+      /* موقعیت بالاتر */
       left: 50%;
       transform: translateX(-50%);
       width: 90%;
@@ -145,18 +170,26 @@
     }
 
     @keyframes smoothExit {
-      0% { opacity: 1; }
-      100% { opacity: 0; visibility: hidden; }
+      0% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+        visibility: hidden;
+      }
     }
 
     @media (max-width: 768px) {
-      .mobile-help { 
+      .mobile-help {
         display: block;
-        top: 80vh; /* تنظیم موقعیت برای موبایل */
+        top: 80vh;
+        /* تنظیم موقعیت برای موبایل */
       }
     }
   </style>
 </head>
+
 <body>
   <div class="container">
     <h2>پل ارتباطی ما 🌸</h2>
@@ -196,4 +229,5 @@
     📱 برای ورود، کادر مورد نظر را لمس کنید
   </div>
 </body>
+
 </html>
