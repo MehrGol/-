@@ -1,17 +1,16 @@
 <!DOCTYPE html>
-<html lang="fa">
-
+<html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>پل ارتباطی ما</title>
+  <title>پل ارتباطی</title> <!-- عنوان اصلاح شده -->
 
   <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
-  <link rel="manifest" href="site.webmanifest" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
 
   <!-- Fonts & Icons -->
   <link href="https://cdn.fontcdn.ir/Font/Persian/Iranian-Sans/Iranian-Sans.css" rel="stylesheet" />
@@ -22,7 +21,7 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: "Iranian Sans", sans-serif;
+      font-family: "Iranian Sans", Tahoma, sans-serif; /* افزودن فونت پشتیبان */
       direction: rtl;
     }
 
@@ -34,7 +33,6 @@
       min-height: 100vh;
       position: relative;
       padding: 20px;
-      /* افزودن پدینگ برای فضای بهتر */
     }
 
     .container {
@@ -48,7 +46,6 @@
         inset 5px 5px 20px rgba(255, 255, 255, 0.2),
         inset -5px -5px 15px rgba(0, 0, 0, 0.75);
       margin-top: -40px;
-      /* جابه‌جایی کانتینر به بالا */
     }
 
     .container h2 {
@@ -56,7 +53,8 @@
       font-size: 25px;
       text-align: center;
       margin-bottom: 25px;
-      /* کاهش فاصله */
+      font-family: "Iranian Sans", Tahoma, sans-serif; /* تأکید بر فونت */
+      letter-spacing: -1px; /* بهبود فاصله حروف */
     }
 
     .list-wrapper {
@@ -64,7 +62,6 @@
       color: inherit;
       display: block;
       margin-bottom: 20px;
-      /* کاهش فاصله */
     }
 
     .list {
@@ -72,7 +69,6 @@
       align-items: center;
       position: relative;
       height: 60px;
-      /* کاهش ارتفاع */
       cursor: pointer;
       background: #FEA5D8;
       border-radius: 30px;
@@ -86,7 +82,6 @@
 
     .rank {
       width: 45px;
-      /* کاهش سایز */
       height: 40px;
       background: rgba(255, 255, 255, 0.9);
       border-radius: 50%;
@@ -97,20 +92,11 @@
 
     .rank i {
       font-size: 22px;
-      /* کاهش سایز آیکون */
     }
 
-    .fa-instagram {
-      color: #E1306C;
-    }
-
-    .fa-telegram {
-      color: #0088cc;
-    }
-
-    .fa-phone-alt {
-      color: #25D366;
-    }
+    .fa-instagram { color: #E1306C; }
+    .fa-telegram { color: #0088cc; }
+    .fa-phone-alt { color: #25D366; }
 
     .text {
       width: 100%;
@@ -125,7 +111,6 @@
 
     .text h4 {
       font-size: 15px;
-      /* کاهش سایز فونت */
       margin-bottom: 6px;
     }
 
@@ -138,25 +123,16 @@
     }
 
     @keyframes slideUp {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    /* راهنمای موبایل - موقعیت جدید */
     .mobile-help {
-      color: rgba(255, 255, 255, 0.9);
+      color: rgba(255,255,255,0.9);
       text-align: center;
       font-size: 13px;
       position: fixed;
       top: 85vh;
-      /* موقعیت بالاتر */
       left: 50%;
       transform: translateX(-50%);
       width: 90%;
@@ -170,31 +146,20 @@
     }
 
     @keyframes smoothExit {
-      0% {
-        opacity: 1;
-      }
-
-      100% {
-        opacity: 0;
-        visibility: hidden;
-      }
+      0% { opacity: 1; }
+      100% { opacity: 0; visibility: hidden; }
     }
 
     @media (max-width: 768px) {
-      .mobile-help {
-        display: block;
-        top: 80vh;
-        /* تنظیم موقعیت برای موبایل */
-      }
+      .mobile-help { top: 80vh; }
     }
   </style>
 </head>
-
 <body>
   <div class="container">
     <h2>پل ارتباطی ما 🌸</h2>
 
-    <a class="list-wrapper" href="instagram://user?username=MehrGol_Organic">
+    <a class="list-wrapper" id="instagram-link">
       <div class="list">
         <div class="rank"><i class="fab fa-instagram"></i></div>
         <div class="text">
@@ -204,7 +169,7 @@
       </div>
     </a>
 
-    <a class="list-wrapper" href="tg://resolve?domain=MehrGol_Organic">
+    <a class="list-wrapper" id="telegram-link">
       <div class="list">
         <div class="rank"><i class="fab fa-telegram"></i></div>
         <div class="text">
@@ -226,10 +191,24 @@
   </div>
 
   <div class="mobile-help">
- لمس = ورود سریع!🚀
-    <br/>
-(اینستا و تلگرام با فیلتر شکن)
+    👆 لمس کنید و وارد شوید!
   </div>
-</body>
 
+  <script>
+    // تشخیص دستگاه و تنظیم لینک‌ها
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    
+    // تنظیم لینک اینستاگرام
+    const instagramLink = document.getElementById('instagram-link');
+    instagramLink.href = isMobile ? 
+      'instagram://user?username=MehrGol_Organic' : 
+      'https://instagram.com/MehrGol_Organic';
+
+    // تنظیم لینک تلگرام
+    const telegramLink = document.getElementById('telegram-link');
+    telegramLink.href = isMobile ?
+      'tg://resolve?domain=MehrGol_Organic' :
+      'https://t.me/MehrGol_Organic';
+  </script>
+</body>
 </html>
